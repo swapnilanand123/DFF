@@ -1,0 +1,14 @@
+module dff_tb();
+  reg clk,rst,din;
+  wire dout;
+  dff dd(dout,clk,rst,din);
+  initial begin
+    $dumpfile("dff.vcd");
+    $dumpvars(1);
+    clk=0;rst=1;din=0;
+    #5 clk=1;rst=0;din=1;
+    #5 din=0;
+    #5 clk=1;rst=1;din=0;
+    #5 $finish; 
+  end
+endmodule
